@@ -4,18 +4,18 @@
 // CC BY-SA 4.0
   
 // JP1 is an input
-byte rows[] = {2,3,4,5};
+byte rows[] = {2,3,4};
 const int rowCount = sizeof(rows)/sizeof(rows[0]);
  
 // JP2 and JP3 are outputs
-byte cols[] = {8,9,10};
+byte cols[] = {8,9,10,11};
 const int colCount = sizeof(cols)/sizeof(cols[0]);
  
 byte keys[colCount][rowCount];
  
 void setup() {
     Serial.begin(115200);
- 
+ Serial.println("setup");
     for(int x=0; x<rowCount; x++) {
         Serial.print(rows[x]); Serial.println(" as input");
         pinMode(rows[x], INPUT);
@@ -65,7 +65,9 @@ void printMatrix() {
 }
  
 void loop() {
+    //Serial.println("loop");
+
     readMatrix();
-    if (Serial.read()=='!')
-        printMatrix();
+//    if (Serial.read()=='!')
+    printMatrix();
 }
